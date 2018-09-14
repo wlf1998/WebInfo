@@ -24,15 +24,7 @@ class ArchiveSpider(scrapy.Spider):
 
     def parse_cate(self,response):
         urls=response.xpath('//div[@id="alpha"]//li/a/@href').extract()
-        #titles=response.xpath('//div[@id="alpha"]//li/a/text()').extract()
-        #dates=response.xpath('//div[@id="alpha"]//li/span/span/text()').extract()
-
-        #for (i,j,k) in zip(urls,titles,dates):
-        #    yield {
-        #        "title":j,
-        #        "date":k,
-        #        "url":i,
-        #    }
+        
         for url in urls:
             yield response.follow(url,self.parse_blog)
 
