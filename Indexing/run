@@ -1,0 +1,3 @@
+#!/bin/bash
+g++ index_mem.cpp -o index_mem
+./index_mem
