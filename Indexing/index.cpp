@@ -79,17 +79,18 @@ int main(int argc,char *argv[])
     }
     out.close();
     
-    ofstream out1("dictionary.txt");
-    ofstream out2("postingsList.txt");
+    ofstream out1("dict.txt");
+    ofstream out2("list.txt");
     for(auto i=PostList.begin();i!=PostList.end();i++)
     {
-        out1<<(*i).first<<" "<<out2.tellp()<<endl;
+        out1<<(*i).first<<" "<<out2.tellp()<<endl;       
+            out2<<(i->second).size()<<" ";
         for(auto j=(i->second).begin();j!=(i->second).end();j++)
         {
             out2<<*j<<" ";
         }
-        out2<<endl;
     }
+    out2<<endl;
     out1.close();
     out2.close();
 }

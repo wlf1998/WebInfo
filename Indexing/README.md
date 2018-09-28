@@ -29,13 +29,13 @@ make clean
 同时实现了基本版和升级版。以下为输出文件。
 
 - 基本版：index.txt
-- 升级版：dictionary.txt    postingsList.txt
+- 升级版：dict.txt    list.txt
 
 ### 目录说明
 
 ```
 .
-├── dictionary.txt	//升级版
+├── dict.txt	//升级版
 ├── doc		//文本文件
 │   ├── 1.txt
 │   ├── 2.txt
@@ -46,7 +46,7 @@ make clean
 ├── index.cpp	//源码
 ├── index.txt	//基本版
 ├── Makefile	//make
-├── postingsList.txt	//升级版
+├── list.txt	//升级版
 └── README.md	
 ```
 

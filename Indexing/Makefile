@@ -7,11 +7,11 @@ test:
 	@echo -e "**** index.txt ****"
 	@cat index.txt
 
-	@echo -e "\n\n**** dictionary.txt ****"
-	@cat dictionary.txt
+	@echo -e "\n\n**** dict.txt ****"
+	@cat dict.txt
 
-	@echo -e  "\n\n**** postingsList.txt ****"
-	@cat postingsList.txt
+	@echo -e  "\n\n**** list.txt ****"
+	@cat list.txt
 
 clean:
-	@rm -rf index index.txt dictionary.txt postingsList.txt
+	@rm -rf index index.txt dict.txt list.txt
