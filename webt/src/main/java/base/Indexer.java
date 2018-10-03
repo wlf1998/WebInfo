@@ -1,33 +1,18 @@
 package base;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.FileVisitResult;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.SimpleFileVisitor;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.util.Date;
 
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
-import org.apache.lucene.document.LongPoint;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
-import org.apache.lucene.document.StringField;
 import org.apache.lucene.document.TextField;
 import org.apache.lucene.index.IndexWriter;
-import org.apache.lucene.index.IndexWriterConfig.OpenMode;
 import org.apache.lucene.index.IndexWriterConfig;
-import org.apache.lucene.index.Term;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
+import org.json.JSONObject;
 
 
 public class Indexer {
@@ -68,8 +53,10 @@ public class Indexer {
         Document doc = new Document();
         //添加字段
         
-        String line="";
-        String contents="";
+        //String line="";
+        JSONObject oj=JsonFile.readFile(file.getCanonicalPath());
+        String contents=oj.getString("contents");
+        /*
         try
         {
                 BufferedReader in=new BufferedReader(new FileReader(file));
@@ -84,6 +71,7 @@ public class Indexer {
         {
                 e.printStackTrace();
         }
+        */
         
         doc.add(new TextField("contents", contents,Field.Store.YES)); //添加内容
         doc.add(new TextField("fileName", file.getName(), Field.Store.YES)); //添加文件名，并把这个字段存到索引文件里
