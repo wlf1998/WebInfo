@@ -83,9 +83,10 @@ public class ProcessMainPage implements PageProcessor {
     			String sent=html.xpath("/html/body/table/tbody["+i+"]/tr/td[1]/text()").toString();
     			String type=html.xpath("/html/body/table/tbody["+i+"]/tr/td[2]/text()").toString();
     			String from=html.xpath("/html/body/table/tbody["+i+"]/tr/td[3]/text()").toString();
-    			String subject=html.xpath("/html/body/table/tbody["+i+"]/tr/td[4]/text()").toString();
+    			String subject=html.xpath("/html/body/table/tbody["+i+"]/tr/td[4]/a/text()").toString();
     			String deadline=html.xpath("/html/body/table/tbody["+i+"]/tr/td[5]/text()").toString();
     			String webPage=html.xpath("/html/body/table/tbody["+i+"]/tr/td[6]/a/@href").toString();
+    			System.out.println(subject);
     			
     			JSONObject jo=new JSONObject();
     			jo.put("name",name);
