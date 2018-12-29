@@ -1,78 +1,65 @@
-# 1. 
+# 1
 
-## （1）
+| doc/term | 2010 | 世博会 | 中国 | 举行 | 2005 | 1970 | 日本 |
+| -------- | ---- | ------ | ---- | ---- | ---- | ---- | ---- |
+| $d_1$    | lg 2 | 0      | lg 2 | 0    | 0    | 0    | 0    |
+| $d_2$    | 0    | 0      | 0    | 0    | lg 2 | lg 2 | lg 2 |
+| $q$      | lg 2 | 0      | lg 2 | 0    | 0    | 0    | 0    |
 
-|    term    | Doc 1 | Doc 2 | Doc 3 | Doc 4 |
-| :--------: | :---: | :---: | :---: | :---: |
-| prediction |   1   |   0   |   0   |   1   |
-|     of     |   1   |   0   |   0   |   0   |
-|   whole    |   1   |   0   |   0   |   0   |
-|  country   |   1   |   1   |   0   |   1   |
-|   sales    |   1   |   1   |   1   |   1   |
-|    rise    |   0   |   1   |   0   |   1   |
-|     in     |   0   |   1   |   1   |   0   |
-|    July    |   0   |   1   |   0   |   1   |
-|  decrease  |   0   |   0   |   1   |   0   |
-|    home    |   0   |   0   |   1   |   0   |
-|    June    |   0   |   0   |   1   |   0   |
+$$
+Sim(q,d_1)=0.707 \\
+sim(q,d_2)=0
+$$
 
-## （2）
+说明$q$与$d_1$更相关
 
-|    term    | doc.freq | postings list       |
-| :--------: | :------: | ------------------- |
-| prediction |    2     | 1[1] 4[1]           |
-|     of     |    1     | 1[1]                |
-|   whole    |    1     | 1[1]                |
-|  country   |    3     | 1[1] 2[1] 4[1]      |
-|   sales    |    4     | 1[1] 2[1] 3[1] 4[1] |
-|    rise    |    2     | 2[1] 4[1]           |
-|     in     |    2     | 2[1] 3[2]           |
-|    July    |    2     | 2[1] 4[1]           |
-|  decrease  |    1     | 3[1]                |
-|    home    |    1     | 3[1]                |
-|    June    |    1     | 4[1]                |
+# 2
+
+- 无法描述词项之间的关系，词项之间并不完全独立，词语之间的关系可能实际上影响文档的相关性
+- 需要扫描所有的文档才能计算
 
 # 3
 
-次序设为
+## 算法思路
 
+### 基本假设1
+
+一个热门的微博会被很多活跃用户转发或发
+
+### 基本假设2
+
+一个活跃用户会转发或发很多热门微博
+
+## 伪代码
+
+```pseudocode
+//m weibis, n users and their posting relationships
+//post[i][j]==1 means user[i] posting or reposting weibo[j]
+input: post[n][m]
+output: hot level, user[n],weibo[m]
+
+//initialize
+for i=1 to n:
+	user[i]=1
+for j=1 to m:
+	weibo[j]=1
+
+//iteration
+repeat 
+	//procedure I
+	for j=1 to m:
+		for i=1 to n:
+			if post[i][j]==1:
+				weibo[j]+=user[i]
+	//procedure O
+	for i=1 to n:
+		for j=1 to m:
+			if post[i][j]==1
+				user[i]+=weibo[j]
+until user and weibo converge
 ```
-extremly cheap DVDs CDs software thrills
-```
 
-则
 
-```
-Q= [1 2 1 1 0 0]
-d1=[0 3 1 1 1 0]
-d2=[0 1 1 0 0 1]
-```
 
-$$
-Q_n=\alpha Q+\beta d_1 - \gamma d_2 \\
-= 1 \times [1\ 2\ 1\ 1\ 0\ 0]+ 0.75 \times [0\ 3\ 1\ 1\ 1\ 0]-0.25 \times[0\ 1\ 1\ 0\ 0\ 1]\\
-= [1\ 2\ 1\ 1\ 0\ 0]+[0\ 2.25\ 0.75\ 0.75\ 0.75\ 0]-[0\ 0.25\ 0.25\ 0\ 0\ 0.25]\\
-=[1\ 4\ 1.5\ 1.75\ 0.75\ -0.25]
-$$
 
-最后向量为`[1 4 1.5 1.75 0.75 0]`
 
-# 4
-
-- Manual thesaurus
-
-人工构建同(近)义词词典
-
-人工构建准确率高，但是费时费力
-
-- Automatically derived thesaurus
-
-自动导出同(近)义词词典.基于词语的共现统计信息
-
-构建起来很迅速，但是准确性不够，冗余数据多
-
-- Refinements based on query log mining
-
-基于查询日志挖掘出的查询等价类
-
-基于用户，准确率较上面要高，但是对数据要求高
