@@ -1,8 +1,6 @@
-# 要求
-
 ## 环境
 
-`Archlinux`
+`Archlinux/Manjora`
 
 请使用`conda`已经构建好的独立环境`tf_env`
 
@@ -11,17 +9,36 @@ conda activate tf_env
 conda deactivate
 ```
 
-## 笔记
+**笔记** 请将具体的笔记每次`push`然后保存在`nutstore`
 
-请将具体的笔记每次`push`然后保存在`nutstore`
+## Part I
 
-## 目录
+### 实验安排
 
-`Notes`: 学习某些知识的笔记。完成后需要转移到`NutStore`
+1. 实现聚类算法
+   - 层级聚类（Hierarchical clustering）算法
+   - K-means 算法
+2. 数据选取
+   - [UCI 数据集](https://archive.ics.uci.edu/ml/datasets.html)
+   - 数据集不能太小
+   - 描述数据集：数据大小和数据特征
+3. [数据预处理](http://staff.ustc.edu.cn/~jpq/courses/webinfo/WebMining2-Data.pdf)
+4. 伪码描述算法
+5. 模型评估
 
-`Part_I`
 
-`Part_II`
+
+## Part II-1
+
+### 实验安排
+
+
+
+
+
+## PartII-2
+
+### 实验安排
 
 
 
