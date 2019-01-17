@@ -1,9 +1,14 @@
-按照`实验二要求.pdf`修改。
+- 按照`实验二要求.pdf`修改。
 
-基本内容已经给出了。
+- 基本内容已经给出了，这个链接的前半部分是[我自己的Part1](https://github.com/drdh/WebInfo/blob/master/WebMining/README.md)
 
+- 把环境修改成自己的环境
 
+- 可以把KNN/Logistic Regression的伪代码部分写详细一点
 
+- 如果要跑代码，使用jupyter notebook跑`src.ipynb`
+
+- 删掉以上内容
 
 
 # 环境
@@ -14,7 +19,6 @@ Kernel: x86_64 Linux 4.19.13-1-MANJARO
 python 3.7
 numpy 1.15
 matplotlib 3.0.2
-networkx 2.2
 jupyter 4.4.0
 ```
 
